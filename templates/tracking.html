@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <body class="bg-dark text-white p-2 bg-opacity-50">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white-50 py-3">
+      <div class="container">
+        <a href="{{ url_for('index') }}" class="navbar-brand"
+          ><span class="text-primary">THINK</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="{{ url_for('new_dish') }}" class="nav-link text-white"
+                >New Dish</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('tracking') }}" class="nav-link text-white"
+                >Tracking</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('new_dish') }}" class="nav-link text-white"
+                >SignIn/SignUP</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="container-fluid mt-5 justify-content-center text-center">
+      <h1 class="text-primary text-uppercase">Your Daily Calories Consumed</h1>
+    </section>
+    <section
+      class="container-fluid mt-5 justify-content-center text-light text-center "
+    >
+      <canvas id="myChart" style="width: 100%; max-width: 1400px"></canvas>
+    </section>
+
+    <script>
+      var xValues = ["Consumed", "Left"];
+      var yValues = [69, 29];
+
+      var barColors = ["#0000FF", "#A9B2C3"];
+
+      new Chart("myChart", {
+        type: "doughnut",
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              backgroundColor: barColors,
+              data: yValues,
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: "",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

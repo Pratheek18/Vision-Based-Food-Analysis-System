@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+
+    <title>BE Project</title>
+  </head>
+  <body class="bg-dark p-2 bg-opacity-50">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white-50 py-3">
+      <div class="container">
+        <a href="/index.html" class="navbar-brand"
+          ><span class="text-danger">THINK</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="/login.html" class="nav-link text-white">SignUp/LogIn</a>
+            </li>
+            <li class="nav-item">
+              <a href="/new_dish.html" class="nav-link text-white">New Dish</a>
+            </li>
+            <li class="nav-item">
+              <a href="/tracing.html" class="nav-link text-white">Tracking</a>
+            </li>
+            <li class="nav-item">
+              <a href="/index.html" class="nav-link text-white">LogOut</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section
+      class="container-fluid mt-5 justify-content-around text-light text-center"
+    >
+      <img src="/imgaes/Supreme Veggie Burger.jpg" alt="" />
+    </section>
+    <section class="container">
+      <section
+        class="
+          container-fluid
+          mt-5
+          justify-content-around
+          text-light text-center
+        "
+      >
+        <h1 class="text-danger text-capitalize">Ingredients</h1>
+      </section>
+
+
+
+      <section
+        class="
+          container-fluid
+          mt-5
+          justify-content-around
+          text-light text-center
+        "
+      >
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Sr.No.</th>
+              <th scope="col">Ingredient</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in payload['ingredients']['ingredients'] %}
+                <tr>
+                    <th scope="row">{{loop.index0}}</th>
+                    <td>{{ i }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+
+
+    <section
+      class="container-fluid mt-5 justify-content-around text-light text-center"
+    >
+      <h1 class="text-danger text-capitalize">Steps</h1>
+        {% for i in payload['ingredients']['steps'] %}
+            <li class="text-dark">
+                {{ i }}
+            </li>
+        {% endfor %}
+    </section>
+  </body>
+</html>
